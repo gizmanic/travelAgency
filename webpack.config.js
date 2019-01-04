@@ -1,9 +1,21 @@
-const path = require('path'); 
+var path = require('path'); 
 
 module.exports = {
     entry: './app/assets/scripts/app.js',
     output: {
-        path: path.resolve(__dirname, '.app/scriptsMain'),
-        filename: 'app.js'    
-    }    
-};
+        path: path.resolve(__dirname, './app/assets/temp/scripts'),
+        filename: 'App.js'    
+    },
+    module:{
+       loaders:[
+         {
+            loader:'babel-loader',
+            query: {
+               presets: ['es2015']
+            },
+            test: /\.js$/,
+            exclude: /node_modules/
+         }
+       ]
+     }
+   }
